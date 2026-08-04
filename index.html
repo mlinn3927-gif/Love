@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Love</title>
+
+<style>
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#ffd1e8,#ffc2d1);
+overflow:hidden;
+font-family:sans-serif;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+position:relative;
+z-index:2;
+}
+
+h1{
+color:#ff4081;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff4f87;
+color:white;
+}
+
+#no{
+background:white;
+border:2px solid #ff4f87;
+color:#ff4f87;
+position:absolute;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-20px);
+}
+100%{
+transform:translateY(110vh);
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+<h1>💖 ကျွန်တော့်ကို ချစ်လား? 🥺</h1>
+
+<button id="yes">💖 ချစ်တယ်</button>
+<button id="no">💔 မချစ်ဘူး</button>
+</div>
+
+<script>
+
+const no=document.getElementById("no");
+
+function move(){
+const x=Math.random()*(window.innerWidth-150);
+const y=Math.random()*(window.innerHeight-80);
+no.style.left=x+"px";
+no.style.top=y+"px";
+}
+
+no.addEventListener("mouseover",move);
+no.addEventListener("touchstart",move);
+
+document.getElementById("yes").onclick=function(){
+document.body.innerHTML=`
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:pink;font-size:35px;text-align:center;padding:20px;">
+💖<br><br>
+ကျွန်တော့်ကို ချစ်ပေးလို့ ကျေးဇူးပါနော် 💕🥹
+</div>
+`;
+};
+
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💗";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(3+Math.random()*4)+"s";
+h.style.animationDelay=Math.random()*5+"s";
+document.body.appendChild(h);
+}
+
+move();
+
+</script>
+
+</body>
+  </html>
